@@ -1,7 +1,7 @@
 import axios from "axios";
-
+BASE_URL='https://event-planner-henon-f1a7c972e0e6.herokuapp.com/'
 const API = axios.create({
-  baseURL: "http://localhost:8000/api"
+  baseURL: BASE_URL + "/api"
 });
 
 export const getEvents = () => API.get("/events/");

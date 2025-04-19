@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-hx5ebuq=yq5!ni@i4vl=6+_*^9zpp0#b+l)obhelzp!%ex%rl*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','https://event-planner-henon-f1a7c972e0e6.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_WHITELIST = ['localhost','http://event-planner-henon-f1a7c972e0e6.herokuapp.com','https://event-planner-henon-f1a7c972e0e6.herokuapp.com']
+
 
 
 # Application definition
@@ -134,19 +136,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Add this line:
 # STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/build/static')
 
 # Tell Django where to find static files (JS, CSS, etc.) **before collectstatic**
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),  # React static
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'frontend/build/static'),  # React static
+# ]
 
 # Where to collect static files for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Optional but recommended:
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -156,3 +158,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+import dj_database_url
+prod_db=dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
