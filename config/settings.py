@@ -137,7 +137,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Add this line:
-STATIC_ROOT = os.path.join(BASE_DIR, '../frontend/build/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/build/static')
 
 # Optional but recommended:
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
