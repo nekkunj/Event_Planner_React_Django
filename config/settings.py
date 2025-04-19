@@ -148,7 +148,7 @@ STATIC_URL = '/static/'
 # ]
 
 # Where to collect static files for production
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = BASE_DIR / 'staticfiles'  
 
 # Optional but recommended:
@@ -167,6 +167,6 @@ STORAGES = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# import dj_database_url
-# prod_db=dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
+import dj_database_url
+prod_db=dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
