@@ -137,10 +137,22 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Add this line:
-STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/build/static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/build/static')
+
+# Tell Django where to find static files (JS, CSS, etc.) **before collectstatic**
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/build/static'),  # React static
+]
+
+# Where to collect static files for production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Optional but recommended:
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
