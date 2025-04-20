@@ -1,0 +1,11 @@
+{
+  "name": "heroku-root-package",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm --prefix frontend start",
+    "build": "npm --prefix frontend run build"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
