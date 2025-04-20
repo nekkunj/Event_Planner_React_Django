@@ -157,7 +157,12 @@ STATIC_URL = '/static/'
 # ]
 
 # Where to collect static files for production
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # STATIC_ROOT = BASE_DIR / 'staticfiles'  
 
 # Optional but recommended:
