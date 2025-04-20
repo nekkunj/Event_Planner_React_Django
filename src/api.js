@@ -31,5 +31,5 @@ export const updateEvent = (id, data) => API.put(`/events/${id}/`, data);
 export const deleteEvent = (id) => API.delete(`/events/${id}/`);
 
 
-API.defaults.xsrfHeaderName =  getCookie('csrftoken');
+API.defaults.xsrfHeaderName =  'X-CSRFToken';
 API.defaults.xsrfCookieName = "csrftoken";
