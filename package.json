@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npm --prefix frontend start",
-    "build": "npm --prefix frontend run build"
+    "build": "npm --prefix frontend run build",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "engines": {
     "node": "18.x"
