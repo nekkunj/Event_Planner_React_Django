@@ -32,6 +32,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 # CORS_ORIGIN_WHITELIST = ['http://localhost:3000','http://event-planner-henon-f1a7c972e0e6.herokuapp.com','https://event-planner-henon-f1a7c972e0e6.herokuapp.com']
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://event-planner-henon-f1a7c972e0e6.herokuapp.com/']
 
 
 
