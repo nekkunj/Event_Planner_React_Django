@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
+from events.views import index
 
 urlpatterns = [
+    path('', index),  # serve React at root
     path('admin/', admin.site.urls),
     path("api/", include("events.urls")),
 ]
