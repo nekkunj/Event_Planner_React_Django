@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "rest_framework",
     'config',
     "events",
+    'frontend'
 ]
 
 MIDDLEWARE = [
@@ -66,10 +67,16 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'config.urls'
 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'frontend/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
+    }
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'frontend'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
