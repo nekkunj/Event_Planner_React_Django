@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useRef} from "react";
 import { deleteEvent, updateEvent,getEventTypes } from "../api";
 import { Gantt ,ContextMenu} from "wx-react-gantt";
-import { Willow } from "wx-react-gantt";
+import { Willow,WillowDark } from "wx-react-gantt";
 import { Toolbar } from "wx-react-gantt";
 import {Button} from 'antd'
 import "wx-react-gantt/dist/gantt.css";
@@ -11,7 +11,7 @@ import "./EventList.css";
 const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
   const apiRef = useRef(null);
   const [eventTypes, setEventTypes] = useState([]);
-  const colorPalette = ["#1890ff", "#52c41a", "#faad14", "#f5222d", "#13c2c2", "#722ed1"];
+  const colorPalette = ["#3983eb", "#52c41a", "#f4b330", "#ff3e48", "#13c2c2", "#b491f3"];
   const [typeColorMap, setTypeColorMap] = useState({});
   const [taskTypes, setTaskTypes] = useState([]);
   const [selected, setSelected] = useState();
@@ -24,12 +24,20 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
     const fetchTypes = async () => {
       const { data } = await getEventTypes();
 
+      // const mappedTypes = data.map((type, index) => {
+      //   const formattedName = type.name.toLowerCase().replace(/\s+/g, '');
+      //   return {
+      //     id: formattedName, // this must match task.type
+      //     label: type.name,
+      //     color: colorPalette[index % colorPalette.length]
+      //   };
+      // });
+    // console.log(mappedTypes)
       const mappedTypes = data.map((type, index) => ({
         id: type.name, // this must match task.type
         label: type.name,
         color: colorPalette[index % colorPalette.length]
       }));
-
       const map = {};
         data.forEach((type, index) => {
         map[type.name] = colorPalette[index % colorPalette.length];
@@ -69,7 +77,7 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
     { unit: "day", step: 1, format: "d" },
   ];
   
-  const links = [{ id: 4, source: 20, target: 21, type: "e2e" }];;
+  const links = [];;
 
  
 
@@ -79,7 +87,7 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
       header: "Title",
       align: "left",
       flexgrow: 2,
-      sort:true
+      sort:true,
     },
     {
       header: "Type",
@@ -113,11 +121,10 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
     },
     // {
     //   id: "action",
-    //   header: "Action",
+    //   header: `<h2>harshu</h2>`,
     //   width: 50,
     //   align: "center",
     //   width:0,
-    //   hidden:true
     // },
 
   ];
@@ -137,6 +144,12 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
  
   const init = (api) => {
     apiRef.current = api;
+
+    api.on("add-task", ({})=>{
+      onCreateEvent()
+    });
+
+
     api.on("update-task", ({ id }) => {
       const ele=api.getTask(id)
       const obj={
@@ -183,13 +196,38 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
       type: "link",
     },
   ];
-
+  // const editorShape = [
+  //   {
+  //     key: "Text",
+  //     type: "text",
+  //     label: "Name",
+  //     config: {
+  //       placeholder: "Task name",
+  //       focus: true,
+  //     },
+  //   },
+  // ];
+  
   return( 
           <div className="demo">
+            <div style={{ margin: "10px 0" }}>
+              {taskTypes.map(t => (
+                <span key={t.id} style={{ marginRight: 15 }}>
+                  <span style={{
+                    backgroundColor: t.color,
+                    display: "inline-block",
+                    width: 12,
+                    height: 12,
+                    marginRight: 5
+                  }} />
+                  {t.label}
+                </span>
+              ))}
+            </div>
             {/* {taskTypes &&  tasks && tasks.length>0 && ( */}
             {/* <Toolbar api={apiRef.current} items={items} /> */}
               <Willow>
-                <Gantt 
+                <Gantt
                 init={init}
                   apiRef={apiRef}
                   tasks={tasks} 
@@ -199,11 +237,14 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
                   taskTypes={taskTypes}
                   viewMode="month"
                   cellWidth={60}
+                  cellHeight={42}
                   showGrid 
                   columns={columns}
                   onCustomClick={doClick}
+                  scaleHeight={48} 
+                  // editorShape={editorShape}
                   // onShowEditor={clearTaskText}
-                  form={null}
+                  // form={null}
                 />
                 </Willow>
             {/* )} */}

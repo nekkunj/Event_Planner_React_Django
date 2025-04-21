@@ -1,53 +1,83 @@
 .demo {
-    overflow: hidden;
-    height: 100%;
-  }
-  
-  /* style rules for the "narrow" type */
-  .demo > .wx-gantt .wx-bar.wx-task.narrow {
-    background-color: #676a81;
-    color: transparent;
-    height: 10px !important;
-    margin-top: 10px;
-    border: 1px solid #63667a;
-  }
-  .demo > .wx-gantt .wx-bar.wx-task.narrow .wx-progress-percent {
-    background-color: #1a2630;
-  }
-  .demo > .wx-gantt .wx-bar.wx-task.narrow .wx-link {
-    background-color: #384047;
-    border-radius: 0px;
-  }
-  .demo > .wx-gantt .wx-bar.wx-task.narrow .wx-link .wx-inner {
-    border-radius: 0px;
-  }
-  
-  .demo > .wx-gantt .wx-progress-percent {
-    background-color: #ffc107;
-  }
-  
-  /* style rules for the "progress" type */
-  .demo > .wx-gantt .wx-bar.wx-task.progress {
-    background-color: transparent;
-    color: var(--wx-color-font);
-    border-radius: 50px;
-    border: 1px solid #00bcd4;
-  }
-  .demo > .wx-gantt .wx-bar.wx-task.progress .wx-progress-percent {
-    background-color: #00bcd4;
-  }
-  .demo > .wx-gantt .wx-bar.wx-task.progress .wx-progress-wrapper {
-    border-radius: 50px;
-  }
-  
-  /* style rules for the "urgent" type */
-  .demo > .wx-gantt .wx-bar.wx-task.urgent {
-    background-color: #f49a82;
-    border: 1px solid #f45e36;
-  }
-  .demo > .wx-gantt .wx-bar.wx-task.urgent .wx-progress-percent {
-    background-color: #f45e36;
-  }
+  overflow: hidden;
+  height: 100%;
+}
+
+/* style rules for the "Hire" type */
+.wx-gantt .wx-bar.wx-task.Hire {
+  background-color: #ff3e48;
+  /* color: transparent !important;  */
+  /* height: 10px !important; */
+  /* margin-top: 10px; */
+  color: white;
+
+  border: 1px solid #e42c2c;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Hire .wx-progress-percent {
+  background-color: #e42c2c;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Hire .wx-link {
+  background-color: #384047;
+  border-radius: 0px;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Hire .wx-link .wx-inner {
+  border-radius: 0px;
+}
+.demo  .wx-gantt .wx-progress-percent {
+  background-color: #ffc107;
+}
+
+/* style rules for the "Stock" type */
+.demo  .wx-gantt .wx-bar.wx-task.Stock {
+  background-color: #17cdcd;
+  color: white;
+  border: 1px solid #21a6a6;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Stock .wx-progress-percent {
+  background-color: #20afaf;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Stock .wx-progress-wrapper {
+  border-radius: 0px;
+}
 
 
-/*  */
+/* style rules for the "New Capital" type */
+.demo  .wx-gantt .wx-bar.wx-task.New {
+  background-color: #f4b330;
+  color: white;
+  border: 1px solid #d59619;
+}
+.demo  .wx-gantt .wx-bar.wx-task.New .wx-progress-percent {
+  background-color: #d59619;
+}
+.demo  .wx-gantt .wx-bar.wx-task.New .wx-progress-wrapper {
+  border-radius: 0px;
+}
+
+
+/* style rules for the "Dividends" type */
+.demo  .wx-gantt .wx-bar.wx-task.Dividends {
+  background-color: #52c41a;
+  color: white;
+  border: 1px solid #44a215;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Dividends .wx-progress-percent {
+  background-color: #44a215;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Dividends .wx-progress-wrapper {
+  border-radius: 0px;
+}
+
+
+/* style rules for the "Share Buybacks" type */
+.demo  .wx-gantt .wx-bar.wx-task.Share {
+  background-color: #b491f3;
+  color: white;
+  border: 1px solid #b491f3;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Share .wx-progress-percent {
+  background-color: #722ed1;
+}
+.demo  .wx-gantt .wx-bar.wx-task.Share .wx-progress-wrapper {
+  border-radius: 0px;
+}
