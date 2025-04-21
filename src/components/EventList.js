@@ -8,7 +8,7 @@ import "wx-react-gantt/dist/gantt.css";
 import "./EventList.css";
 
 
-const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
+const EventList = ({ events, refresh,onEditEvent, onCreateEvent,selectedType,selectedTitle }) => {
   const apiRef = useRef(null);
   const [eventTypes, setEventTypes] = useState([]);
   const colorPalette = ["#3983eb", "#52c41a", "#f4b330", "#ff3e48", "#13c2c2", "#b491f3"];
@@ -16,8 +16,6 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
   const [taskTypes, setTaskTypes] = useState([]);
   const [selected, setSelected] = useState();
   const [isReady, setIsReady] = useState(false);
-
-  
 
 
   useEffect(() => {
@@ -51,25 +49,38 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
     
   }, []);
   
-  const convertEventsToTasks = (events) => {
-    return events.map((event) => ({
-      id: event.id,
-      text: event.title,
-      start: new Date(event.startDate + "T00:00:00") ,
-      end: new Date(event.endDate + "T00:00:00"),
-      details:event.description,
-      duration: Math.ceil((new Date(event.endDate + "T00:00:00") - new Date(event.startDate + "T00:00:00")) / (1000 * 60 * 60 * 24)),
-      progress: event.progress,
-      type: event.type ,
-      barColor: typeColorMap[event.type] || "#d9d9d9",  // fallback gray
-      lazy: false,
-    }));
+  const convertEventsToTasks = (events, selectedType, searchText) => {
+    return events
+      .filter((event) => {
+        const matchesType =
+          selectedType === "all" || event.type === selectedType;
+        const matchesSearch =
+          !searchText ||
+          event.title.toLowerCase().includes(searchText.toLowerCase());
+  
+        return matchesType && matchesSearch;
+      })
+      .map((event) => ({
+        id: event.id,
+        text: event.title,
+        start: new Date(event.startDate + "T00:00:00"),
+        end: new Date(event.endDate + "T00:00:00"),
+        details: event.description,
+        duration: Math.ceil(
+          (new Date(event.endDate + "T00:00:00") - new Date(event.startDate + "T00:00:00")) /
+            (1000 * 60 * 60 * 24)
+        ),
+        progress: event.progress,
+        type: event.type,
+        barColor: typeColorMap[event.type] || "#d9d9d9",
+        lazy: false,
+      }));
   };
 
   
 
 
-  const tasks = convertEventsToTasks(events);
+  const tasks = convertEventsToTasks(events,selectedType,selectedTitle);
  
 
   const scales = [
@@ -119,13 +130,6 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent  }) => {
       align: "center",
       flexgrow: 1,
     },
-    // {
-    //   id: "action",
-    //   header: `<h2>harshu</h2>`,
-    //   width: 50,
-    //   align: "center",
-    //   width:0,
-    // },
 
   ];
 

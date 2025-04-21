@@ -1,7 +1,12 @@
 
 # 📅 Event Planner App
 
-A full-stack Event Planner application built with **React** (frontend) and **Django** (backend) using **MySQL** as the database. The backend is deployed on **Heroku**, and the app supports full CRUD functionality for planning and managing events.
+A full-stack Event Planner application designed to help users seamlessly create, view, update, and delete events. This app is perfect for scheduling meetings, parties, or any type of gathering. Users can view categorized events, and the UI provides a clean and intuitive experience for managing event data.
+
+🌐 **Live Website:**  
+**[https://event-planner-henon-f1a7c972e0e6.herokuapp.com/](https://event-planner-henon-f1a7c972e0e6.herokuapp.com/)**
+
+This application is built using a modern **React** frontend and a robust **Django REST Framework** backend. It leverages **MySQL** for data persistence and supports cross-origin requests with proper CSRF and CORS configuration, enabling secure communication between the frontend and backend.
 
 ---
 
@@ -25,7 +30,7 @@ event-planner/
 │       └── components/  # UI components
 │       └── pages/       # Page components
 │
-├         # Django app
+├# Django app
 │── config/          # Django settings & URLs
 │── events/          # Main events app (models, views, etc.)
 │── manage.py
@@ -50,11 +55,12 @@ event-planner/
    pip install -r requirements.txt
    ```
 
-3. **Configure environment variables** (e.g., `.env` file or Heroku config):
+3. **Configure environment variables** (change it in config/setting.py):
    ```
    DATABASE_URL=mysql://username:password@host:port/dbname
    CORS_ALLOWED_ORIGINS=http://localhost:3000
    ```
+   I have hosted it on hereku postgres
 
 4. **Run migrations:**
    ```bash
@@ -71,7 +77,7 @@ event-planner/
 
 ---
 
-### 🌐 Frontend Setup (React)
+### 🌐 Frontend Setup (React) Locally
 
 1. **Navigate to frontend and install dependencies:**
    ```bash
@@ -133,13 +139,3 @@ export const deleteEvent = (id) => API.delete(`/events/${id}/`);
 - [ ] Implement notifications / calendar integration
 
 ---
-
-## 📸 Screenshots
-
-*(Add UI screenshots here)*
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.

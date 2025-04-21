@@ -2,12 +2,12 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Event(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     type = models.CharField(max_length=255)
     description = models.TextField(blank=True, default="")  # Optional field
     startDate = models.DateField()
     endDate = models.DateField()
-    order = models.IntegerField(default=0)
+    # order = models.IntegerField(default=0)
     progress = models.IntegerField(
             default=0,
             validators=[

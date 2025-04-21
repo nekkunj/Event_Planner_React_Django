@@ -113,8 +113,8 @@ const EventForm = ({ refresh, visible, disablevisible,initialValues }) => {
         >
           <Form.Item
             name="title"
-            label="Name"
-            rules={[{ required: true, message: "Please enter a name" }]}
+            label="Title"
+            rules={[{ required: true, message: "Please enter title for the event" }]}
           >
             <Input placeholder="New Task" />
           </Form.Item>
