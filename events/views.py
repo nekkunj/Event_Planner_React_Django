@@ -4,7 +4,7 @@ from .serializers import EventSerializer,EventTypeSerializer
 from django.shortcuts import render
 
 class EventViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.all().order_by("order")
+    queryset = Event.objects.all()
     serializer_class = EventSerializer
 
 
