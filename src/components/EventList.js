@@ -245,7 +245,7 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent,selectedType,sel
                   showGrid 
                   columns={columns}
                   onCustomClick={doClick}
-                  scaleHeight={48} 
+                  scaleHeight={40} 
                   // editorShape={editorShape}
                   // onShowEditor={clearTaskText}
                   // form={null}
