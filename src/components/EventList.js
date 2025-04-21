@@ -136,7 +136,6 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent,selectedType,sel
   
   function doClick(ev) {
     const data = ev;
-    console.log(ev)
     apiRef.current.exec("update-task", {
       id: data.id,
       task: {
@@ -167,8 +166,8 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent,selectedType,sel
         // barColor: typeColorMap[event.type] || "#d9d9d9",  // fallback gray
       }
       updateEvent(id,obj)
-      console.log("updating id:", id);
-      console.log(api.getTask(id))
+      // console.log("updating id:", id);
+      // console.log(api.getTask(id))
     });
     
     api.on("delete-task", ({ id,source }) => {
@@ -177,7 +176,7 @@ const EventList = ({ events, refresh,onEditEvent, onCreateEvent,selectedType,sel
 
     api.on("move-task", ({ id, source, inProgress }) => {
       if (inProgress) return;
-      console.log(id,source,inProgress)
+      // console.log(id,source,inProgress)
       // if (api.getTask(id).parent !== source) recalcSummaryProgress(source, true);
       // recalcSummaryProgress(id);
     });

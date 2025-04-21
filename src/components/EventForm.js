@@ -57,7 +57,6 @@ const EventForm = ({ refresh, visible, disablevisible,initialValues }) => {
       if (initialValues?.id) {
         await updateEvent(initialValues.id, payload);
       } else {
-        console.log(payload)
         await createEvent(payload);
       }
       refresh();

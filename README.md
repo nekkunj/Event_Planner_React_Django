@@ -12,10 +12,10 @@ This application is built using a modern **React** frontend and a robust **Djang
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React, Axios
-- **Backend:** Django, Django REST Framework
-- **Database:** MySQL
-- **Deployment:** Heroku (backend), Vercel/Netlify/Localhost (frontend)
+- **Frontend:** React, Express, antdesign, wx-react-gantt
+- **Backend:** Django, REST Framework
+- **Database:** Postgres SQL
+- **Deployment:** Heroku
 
 ---
 
@@ -24,11 +24,10 @@ This application is built using a modern **React** frontend and a robust **Djang
 ```
 event-planner/
 │
-├── frontend/            # React app (client)
-│   └── src/
-│       └── api/         # Axios configuration
-│       └── components/  # UI components
-│       └── pages/       # Page components
+│-── src/             # React app (client)
+│    └── api/         # Axios configuration
+│    └── components/  # UI components
+│    └── pages/       # Page components
 │
 ├# Django app
 │── config/          # Django settings & URLs
@@ -81,7 +80,6 @@ event-planner/
 
 1. **Navigate to frontend and install dependencies:**
    ```bash
-   cd ../frontend
    npm install
    ```
 
@@ -135,7 +133,6 @@ export const deleteEvent = (id) => API.delete(`/events/${id}/`);
 ## ✅ To Do / Improvements
 
 - [ ] Add authentication (JWT or session-based)
-- [ ] Add filtering & search
 - [ ] Implement notifications / calendar integration
 
 ---
